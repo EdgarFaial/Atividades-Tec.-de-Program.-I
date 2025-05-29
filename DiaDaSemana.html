@@ -1,0 +1,32 @@
+<script>
+    x = 0;
+
+    while(x <1 || x >7 || isNaN(x))
+    {
+        x = prompt("Digite o numero do dia da semana (1 a 7):") - 0 
+    }
+    switch (x) {
+        case 1:
+    x = "Domingo"
+            break;
+            case 2:
+    x = "Segunda-Feira"
+            break;
+            case 3:
+    x = "Terça-Feira"
+            break;
+            case 4:
+    x = "Quarta-Feira"
+            break;
+            case 5:
+    x = "Quinta-Feira"
+            break;
+            case 6:
+    x = "Sexta-Feira"
+            break;
+            case 7:
+    x = "Sabado"
+            break;
+    }
+    alert("Hoje e "+x+".")
+</script>
