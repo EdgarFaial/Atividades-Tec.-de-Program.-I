@@ -1,0 +1,27 @@
+<script>
+    const hoje = new Date()
+    const ano = hoje.getFullYear()
+    const mes = hoje.getMonth()+1
+    const dia = hoje.getDate()
+
+    anoN = 100000
+    mesN =0
+    diaN =0
+    while(anoN > ano)
+    {
+        anoN = prompt("digite o ano em que voce nasceu")
+    }
+    while(mesN > 12 || mesN<1)
+    {
+        mesN = prompt("agora o mes")
+    }
+    while(diaN > 31 || diaN <1)
+    {
+        diaN = prompt("agora o dia")
+    }
+    idade = ano - anoN
+    if (mes < mesN || (mes == mesN && dia < diaN)) {
+        idade--
+    }
+    alert("voce tem "+idade+" anos.")
+</script>
