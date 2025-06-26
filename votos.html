@@ -1,0 +1,27 @@
+<script>
+    nomes = []
+    idades = []
+    for(i = 0; i<19;i++)
+    {
+        nomes.push(prompt("Digite o nome de 20 pessoas"))
+    }
+    for(i = 0; i<19;i++)
+    {
+        idades.push(parseInt(prompt("Digite a idade de 20 pessoas")))
+    }
+    for(i = 0; i<19;i++)
+    {
+        if(idades[i] < 16)
+        {
+            alert(nomes[i]+" nao pode votar.")
+        }
+        else if(idades[i] >= 16 && idades[i] < 18 || idades[i] > 69)
+        {
+            alert(nomes[i]+" tem voto opcional.")
+        }
+        else if(idades[i] >= 18 && idades[i] < 70)
+        {
+            alert(nomes[i]+" tem voto Obrigatorio.")
+        }
+    }
+</script>
