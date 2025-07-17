@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Regras de 3</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #252629;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: 1;
+            margin-bottom: 20px;
+            text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.597);
+        }
+
+        .calc-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 20px;
+        }
+
+        input {
+            background-color: transparent;
+            border: 2px solid white;
+            padding: 10px;
+            font-size: 1.2em;
+            color: rgb(255, 255, 255);
+            width: 80px;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        .arrow {
+            font-size: 2em;
+        }
+
+        button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .result {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        .result span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CALCULADORA DE REGRAS DE 3</h1>
+        <div class="calc-box">
+            <div class="input-box">
+                <input type="number" id="a1" value="1">
+            </div>
+            <div class="arrow">→</div>
+            <div class="input-box">
+                <input type="number" id="a2" value="1">
+            </div>
+        </div>
+        <div class="calc-box">
+            <div class="input-box">
+                <input type="number" id="b1" value="1">
+            </div>
+            <div class="arrow">→</div>
+            <div class="input-box">
+                <input type="number" id="b2" disabled>
+                <span>X</span>
+            </div>
+        </div>
+        <div class="calculate">
+            <button onclick="calcular()">Calcular x</button>
+        </div>
+        <div class="result">
+            <p>X é igual a <span id="result-value">8</span></p>
+        </div>
+    </div>
+
+    <script>
+        function calcular() {
+            const a1 = parseFloat(document.getElementById("a1").value);
+            const a2 = parseFloat(document.getElementById("a2").value);
+            const b1 = parseFloat(document.getElementById("b1").value);
+            
+            const x = (b1 * a2) / a1;
+
+            document.getElementById("b2").value = x;
+            document.getElementById("result-value").textContent = x;
+        }
+    </script>
+</body>
+</html>
