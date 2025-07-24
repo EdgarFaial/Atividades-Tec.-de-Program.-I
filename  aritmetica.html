@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritmetica</title>
+</head>
+<style>
+    body{
+        background-color: #252526;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1{
+        color: aliceblue;
+        font-weight: 100;
+        text-align: center;
+        text-shadow: 0px 0px 10px aliceblue;
+        font-size:500%;
+        }
+    input{
+        
+        background-color: #252526;
+        color: aliceblue;
+        text-align: center;
+        width: 10%;
+        height: 20px;
+    }
+    .container{
+        text-align: center;
+    }
+    .botoes{
+        margin-top: 10px;
+        justify-content: center;
+        color: aliceblue;
+        font-weight: 100;
+        display:flex;
+
+        }
+</style>
+<body>
+    <h1>ARITMETICA</h1>
+    <div class="container">
+    <input type="number" id="n1" name="n1">
+    <input type="number" id="n2" name="n2">
+    </div>
+    <div class="botoes">
+    <button type="button" onclick="calcp()">+</button>
+    <button type="button" onclick="calcm()">-</button>
+    <button type="button" onclick="calcmu()">x</button>
+    <button type="button" onclick="calcd()">÷</button>
+    <h2 id="resultado"></h2>
+    </div>
+</body>
+<script>
+    function calcp(){
+    n1 = parseFloat(document.getElementById("n1").value)
+    n2 = parseFloat(document.getElementById("n2").value)
+    resultado = n1+n2
+      document.getElementById("resultado").innerHTML = resultado
+    }
+    function calcm(){
+        n1 = parseFloat(document.getElementById("n1").value)
+        n2 = parseFloat(document.getElementById("n2").value)
+        resultado = n1-n2
+        document.getElementById("resultado").innerHTML = resultado    
+    }
+    function calcmu(){
+        n1 = parseFloat(document.getElementById("n1").value)
+        n2 = parseFloat(document.getElementById("n2").value)
+        resultado = n1*n2
+        document.getElementById("resultado").innerHTML = resultado    
+    }
+    function calcd(){
+        n1 = parseFloat(document.getElementById("n1").value)
+        n2 = parseFloat(document.getElementById("n2").value)
+        resultado = n1/n2
+        document.getElementById("resultado").innerHTML = resultado    
+    }
+
+</script>
+</html>
