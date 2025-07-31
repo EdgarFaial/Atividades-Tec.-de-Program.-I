@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function mudaVisibilidade(id) {
+            const elementoHTML = document.getElementById(id);
+            if (elementoHTML.className == "mostra") {
+                elementoHTML.className = "esconde";
+            } else {
+                elementoHTML.className = "mostra";
+            }
+        }
+
+        function troca(){
+            const lista1 = document.getElementById("listaTeste1");
+            const lista2 = document.getElementById("listaTeste2");
+            const botao = document.getElementById("botao");
+
+            if (lista1.className === "mostra" || lista2.className === "mostra") {
+                lista1.className = "esconde";
+                lista2.className = "esconde";
+                botao.value = "Mostra";
+            } else {
+                lista1.className = "mostra";
+                lista2.className = "mostra";
+                botao.value = "Esconde";
+            }
+        }
+    </script>
+    <style>
+        .mostra {
+            display: block;
+        }
+        .esconde {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" id="botao" value="Mostra" onclick="troca()">
+    <ol>
+        <li onclick="mudaVisibilidade('listaTeste1')">Teste1
+            <ul id="listaTeste1" class="mostra">
+                <li>bla</li>
+                <li>bla</li>
+                <li>bla</li>
+            </ul>
+        </li>
+        <li onclick="mudaVisibilidade('listaTeste2')">Teste2
+            <ul id="listaTeste2" class="mostra">
+                <li>ble</li>
+                <li>ble</li>
+                <li>ble</li>
+            </ul>
+        </li>
+    </ol>
+</body>
+</html>
