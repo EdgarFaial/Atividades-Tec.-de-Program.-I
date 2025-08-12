@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aritmetica</title>
+  <style>
+    body {
+      background-color: #252526;
+      font-family: Arial, Helvetica, sans-serif;
+      color: aliceblue;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-weight: 100;
+      text-shadow: 0px 0px 10px aliceblue;
+      font-size: 500%;
+    }
+
+    input {
+      background-color: #252526;
+      color: aliceblue;
+      text-align: center;
+      width: 100px;
+      height: 30px;
+      margin: 10px;
+      font-size: 18px;
+      border: 1px solid #ffffff;
+      border-radius: 0px;
+    }
+
+    .botoes button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #44444400;
+      color: white;
+      border-radius: 0px;
+      border: 1px solid #ffffff;
+      transition: background-color 0.3s;
+    }
+
+    .botoes button:hover {
+      background-color: #6666668e;
+      box-shadow: 0px 0px 20px #ffffff;
+
+    }
+
+    #resultado {
+      margin-top: 20px;
+      font-size: 24px;
+      font-weight: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ARITMETICA</h1>
+
+  <div>
+    <input type="number" id="n1" placeholder="Numero 1" />
+    <input type="number" id="n2" placeholder="Numero 2" />
+  </div>
+
+  <div class="botoes">
+    <button onclick="calcp()">+</button>
+    <button onclick="calcm()">-</button>
+    <button onclick="calcmu()">×</button>
+    <button onclick="calcd()">÷</button>
+    <button onclick="limpar()">Limpar</button>
+  </div>
+
+  <div id="resultado">Aguardando valores...</div>
+
+  <script>
+  const historico = [];
+    sinal = ""
+  function pegarValores() {
+    const n1 = parseFloat(document.getElementById("n1").value);
+    const n2 = parseFloat(document.getElementById("n2").value);
+    return [n1, n2];
+  }
+
+  function validarInputs(n1, n2) {
+    if (isNaN(n1) || isNaN(n2)) {
+      document.getElementById("resultado").innerText = "Por favor, preencha ambos os campos.";
+      return false;
+    }
+    return true;
+  }
+
+  function adicionarAoHistorico(operando1, operando2, operacao, resultado) {
+    const obj = { operando1, operando2, operacao, resultado };
+    historico.push(obj);
+    exibirHistorico();
+  }
+
+  function exibirHistorico() {
+    let html = "<h3>Histórico:</h3>";
+    historico.forEach(item => {
+      html += `<div>${item.operando1} ${item.operacao} ${item.operando2} = ${item.resultado}</div>`;
+    });
+    document.getElementById("historico").innerHTML = html;
+  }
+
+  function calcp() {
+    const [n1, n2] = pegarValores();
+    if (!validarInputs(n1, n2)) return;
+    const res = n1 + n2;
+    document.getElementById("resultado").innerText = `Resultado: ${n1} + ${n2} = ${res}`;
+    adicionarAoHistorico(n1, n2, "+", res);
+  }
+
+  function calcm() {
+    const [n1, n2] = pegarValores();
+    if (!validarInputs(n1, n2)) return;
+    const res = n1 - n2;
+    document.getElementById("resultado").innerText = `Resultado: ${n1} - ${n2} = ${res}`;
+    adicionarAoHistorico(n1, n2, "-", res);
+  }
+
+  function calcmu() {
+    const [n1, n2] = pegarValores();
+    if (!validarInputs(n1, n2)) return;
+    const res = n1 * n2;
+    document.getElementById("resultado").innerText = `Resultado: ${n1} x ${n2} = ${res}`;
+    adicionarAoHistorico(n1, n2, "x", res);
+  }
+
+  function calcd() {
+    const [n1, n2] = pegarValores();
+    if (!validarInputs(n1, n2)) return;
+    if (n2 === 0) {
+      document.getElementById("resultado").innerText = "Erro: divisão por zero.";
+      return;
+    }
+    const res = n1 / n2;
+    document.getElementById("resultado").innerText = `Resultado: ${n1} ÷ ${n2} = ${res}`;
+    adicionarAoHistorico(n1, n2, "÷", res);
+  }
+
+  function limpar() {
+    document.getElementById("n1").value = "";
+    document.getElementById("n2").value = "";
+    document.getElementById("resultado").innerText = "Aguardando valores...";
+    document.getElementById("historico").innerHTML = "";
+    historico.length = 0;
+  }
+</script>
+
+<div id="historico"></div>
+
+</body>
+</html>
