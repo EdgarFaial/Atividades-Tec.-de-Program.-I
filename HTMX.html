@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Nomes</title>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+</head>
+<body>
+    <h1>Cadastro de Nomes</h1>
+
+    <form id="formNome" hx-post="https://ola-tp1.onrender.com/nomes" hx-target="#resposta" hx-swap="innerHTML" onsubmit="return validarNome();">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <button type="submit">Adicionar Nome</button>
+    </form>
+
+    <div id="resposta"></div>
+
+    <button hx-get="https://ola-tp1.onrender.com/nomes" hx-target="#nomesCadastrados" hx-swap="innerHTML">Listar Nomes</button>
+
+    <div id="nomesCadastrados"></div>
+
+    <script>
+        async function validarNome() {
+            const nomeInput = document.getElementById("nome");
+            const nome = nomeInput.value.trim(); 
+
+            if (!nome) {
+                alert("Por favor, insira um nome válido.");
+                return false;
+            }
+
+            const resposta = await fetch(`https://ola-tp1.onrender.com/existe?nome=${nome}`);
+            const dados = await resposta.json();
+
+            if (dados === true) {
+                alert(`O nome "${nome}" já está cadastrado.`);
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
