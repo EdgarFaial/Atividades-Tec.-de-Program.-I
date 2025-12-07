@@ -38,7 +38,6 @@ app.post("/", (req, res) => {
   });
 });
 
-// Rota para reiniciar o jogo
 app.post("/novo-jogo", (req, res) => {
   numeroSecreto = Math.floor(Math.random() * 100) + 1;
   console.log("Novo número secreto (debug):", numeroSecreto);
@@ -47,4 +46,5 @@ app.post("/novo-jogo", (req, res) => {
 
 app.listen(8080, () => {
   console.log("Servidor rodando em http://localhost:8080");
+
 });
